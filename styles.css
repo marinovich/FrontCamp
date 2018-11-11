@@ -6,13 +6,24 @@
 .main {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   height: 200px;
 }
 
 .main > * {
-  width: 400px;
-  margin: 0 20px;
-  background-color: aqua;
+  min-height: 400px;
+  margin: 20px;
+  flex: 1 1 100%;
+  border: 1px black solid;
+}
+
+.sources, .top-rated {
+  max-width: 400px;
+}
+
+.article {
+  max-width: 800px;
 }
 
 .sources__list {
@@ -21,22 +32,29 @@
   max-height: 400px;
   overflow: scroll;
   width: 100%;
-  
 }
 
 .sources__item {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  border: 1px black solid;
-  padding: 5px;
-  min-height: 40px;
+  padding: 10px;
+  min-height: 60px;
   width: 100%;
-  background-color: aquamarine;
   cursor: pointer;
 }
 
+.sources__item:hover {
+  background-color: rgba(83, 138, 228, 0.3);
+}
+
 .item__image {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+.hidden {
+  display: none;
+  color: #538AE4
 }

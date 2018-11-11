@@ -1,6 +1,5 @@
 import { NewsData } from './data.js';
-import { getSources } from './services/newsApi.js';
-import { renderList } from './services/render.js'
+import { renderList, getSources } from './services/index.js'
 
 export const init = () => {
   const newsData = new NewsData();
