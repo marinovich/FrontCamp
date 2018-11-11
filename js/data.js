@@ -3,6 +3,8 @@ export class NewsData {
     this.sourcesMap = new Map();
     this.topRatedBySourceId = new Map();
     this.articlesById = new Map();
+    this.currentSource = null;
+    this.currentHeadline = null;
   }
 
   /**
@@ -26,5 +28,5 @@ export class NewsData {
     this.topRatedBySourceId[id] = topRatedList;
   }
 
-  getTopRated(sourceId) {return this.topRatedBySourceId[sourceId]}; 
+  // getTopRated(sourceId) {return this.topRatedBySourceId[sourceId]}; 
 }

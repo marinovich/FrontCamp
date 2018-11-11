@@ -1,3 +1,3 @@
-export function a() {
-  console.log('333');
-}
+import { init } from './init.js';
+
+init();
