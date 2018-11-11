@@ -2,14 +2,12 @@ import { generateLogoUrl } from '../utils/index.js';
 
 /**
  * Renders item's list and replaces the gotten by id list with it
- * @param {string} listId
- * @param {string} templateId 
+ * @param {HTMLElement} list
+ * @param {HTMLElement} item
  * @param {Map<string, Object>} data 
  */
-export const renderList = (listId, itemId, data) => {
+export const renderList = (list, item, data) => {
   const documentFragmentList = document.createDocumentFragment();
-  const list = document.getElementById(listId);
-  const item = document.getElementById(itemId);
 
   data.forEach(element => {
     const newItem = item.cloneNode(true);
@@ -36,5 +34,6 @@ export const renderList = (listId, itemId, data) => {
 
   // remove sample item
   list.removeChild(item);
+  // append document fragment to list
   list.appendChild(documentFragmentList);
 };

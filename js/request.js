@@ -1,7 +1,5 @@
 import { API_KEY, API_VERSION, BASE_URL } from './constants.js';
 
-// const parametersMap = new Map();
-
 /**
  * Returns NewsAPI response
  * @param {string} endpoint - 
