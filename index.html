@@ -4,15 +4,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Task1</title>
+    <title>NewsAPITask</title>
     <link href="styles.css" rel="stylesheet">
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="index.js">
-      
-    </script>
+    <header class="header"></header>
+    <main class="main">
+      <section class="sources">
+        <ul class="sources__list" id="sources-list">
+          <!-- Sample to be deleted after insertion its copies -->
+          <li class="sources__item" id="sources-item">
+            <img src="" alt="" class="item__image" id="source-image">
+            <span class="item__caption" id="item-caption"></span>
+          </li>
+        </ul>
+      </section>
+      <section class="top-rated">
+        <ul class="top-rated__list" id="top-rated-list">
+          <!-- Sample to be deleted after insertion its copies -->
+          <li class="top-rated__item" id="top-rated-item"></li>
+        </ul>
+      </section>
+      <section class="article">
+        <article class="article__item" id="article"></article>
+      </section>
+    </main>
+    <footer class="footer"></footer>    
   </body>
+
+  <script type="module" src="index.js"></script>
 
 </html>
