@@ -9,28 +9,38 @@
   </head>
 
   <body>
-    <header class="header"></header>
+    <header class="header">
+      <h1 class="title">ALL NEWS IN ONE PLACE</h1>
+    </header>
     <main class="main">
       <section class="sources">
         <ul class="sources__list" id="sources-list">
           <!-- Sample to be deleted after insertion its copies -->
-          <li class="sources__item" id="sources-item">
-            <img src="" alt="" class="item__image" id="source-image">
-            <span class="item__caption" id="item-caption"></span>
+          <li class="sources__item item" id="sources-item">
+            <img src="" alt="" class="item__image item__image_small" id="source-image">
+            <h3 class="item__caption" id="item-caption"></h3>
           </li>
         </ul>
       </section>
-      <section class="top-rated hidden">
+      <section class="top-rated hidden" id="top-rated">
         <ul class="top-rated__list" id="top-rated-list">
           <!-- Sample to be deleted after insertion its copies -->
-          <li class="top-rated__item" id="top-rated-item"></li>
+          <li class="top-rated__item item" id="top-rated-item">
+            <img src="images/default-news.png" alt="" class="item__image item__image_medium" id="top-rated-image">
+            <div class="item__info">
+              <h3 class="item__caption" id="item-caption"></h3>
+              <p class="item__description" id="item-description"></p>
+            </div>
+          </li>
         </ul>
       </section>
-      <section class="article hidden">
-        <article class="article__item" id="article"></article>
+      <section class="article hidden" id="article">
+        <article class="article__item" id="article-item"></article>
       </section>
     </main>
-    <footer class="footer"></footer>    
+    <footer class="footer">
+      <a href="https://newsapi.org" target="blank">Powered by News API</a>
+    </footer>    
   </body>
 
   <script type="module" src="js/index.js"></script>
