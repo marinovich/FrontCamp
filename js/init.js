@@ -7,8 +7,10 @@ export const init = () => {
   const sourceItem = document.getElementById('sources-item');
   const topRatedSection = document.getElementById('top-rated');
   const topRatedList = document.getElementById('top-rated-list');
+  const articleBlock = document.getElementById('article');
 
   const showTopRatedBlock = () => topRatedSection.classList.remove('hidden');
+  const showArticleBlock = () => articleBlock.classList.remove('hidden');
   const toggleItem = element => element.classList.toggle('selected');
 
   const newsData = new NewsData(toggleItem, getSourceItemElement);
@@ -19,11 +21,13 @@ export const init = () => {
     renderSourceList(sourceList, sourceItem, newsData.sources);
   });
 
+  sourceList.addEventListener('click', showTopRatedBlock, { once: true });
+  topRatedList.addEventListener('click', showArticleBlock, { once: true });
+  
   sourceList.addEventListener('click', (event) => {
     newsData.toggleSourceItem(event.target);
-    showTopRatedBlock();
   });
-
+  
   topRatedList.addEventListener('click', (event) => {
     newsData.toggleSourceItem(event.target);
   });

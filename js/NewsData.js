@@ -17,7 +17,7 @@ export class NewsData {
   }
 
   /**
-   * @param {Array<{}>} sources
+   * @param {{}[]} sources
    */
   set sources(sources) {
     sources.forEach(sourceItem => this.sourcesMap.set(sourceItem.id, sourceItem));
