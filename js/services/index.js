@@ -1,2 +1,2 @@
 export * from './newsApi.js';
-export * from './render.js';
+export * from './renderList.js';

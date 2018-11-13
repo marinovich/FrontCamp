@@ -1,34 +1,36 @@
 import { NewsData } from './NewsData.js';
-import { renderSourceList, getSources } from './services/index.js'
-import { getSourceItemElement } from './utils/index.js';
+import { renderList, getSources, getTopHeadlines } from './services/index.js'
+import { getItemElement, getElementId } from './utils/index.js';
 
 export const init = () => {
   const sourceList = document.getElementById('sources-list');
   const sourceItem = document.getElementById('sources-item');
   const topRatedSection = document.getElementById('top-rated');
   const topRatedList = document.getElementById('top-rated-list');
-  const articleBlock = document.getElementById('article');
+  const topRatedItem = document.getElementById('top-rated-item');
 
-  const showTopRatedBlock = () => topRatedSection.classList.remove('hidden');
-  const showArticleBlock = () => articleBlock.classList.remove('hidden');
+  const showTopRatedArticlesBlock = () => topRatedSection.classList.remove('hidden');
   const toggleItem = element => element.classList.toggle('selected');
 
-  const newsData = new NewsData(toggleItem, getSourceItemElement);
+  const newsData = new NewsData(
+    toggleItem, 
+    getItemElement,
+    getTopHeadlines,
+  );
 
   // first get the source data
-  getSources().then(sources => {
+  getSources().then((sources) => {
     newsData.sources = sources;
-    renderSourceList(sourceList, sourceItem, newsData.sources);
+    renderList(sourceList, sourceItem, newsData.sources);
   });
 
-  sourceList.addEventListener('click', showTopRatedBlock, { once: true });
-  topRatedList.addEventListener('click', showArticleBlock, { once: true });
-  
-  sourceList.addEventListener('click', (event) => {
-    newsData.toggleSourceItem(event.target);
+  sourceList.addEventListener('click', showTopRatedArticlesBlock, { once: true });
+
+  // add event listener to top rated articles item.
+  sourceList.addEventListener('click', ({ target: item }) => {
+    newsData.toggleSourceItem(item);
+
+    newsData.getTopRatedNewsById(getElementId(item.id))
+      .then(articles => renderList(topRatedList, topRatedItem, articles));
   });
-  
-  topRatedList.addEventListener('click', (event) => {
-    newsData.toggleSourceItem(event.target);
-  });
-}
+};
