@@ -1,5 +1,5 @@
 import { NewsData } from './NewsData.js';
-import { renderList, getSources, getTopHeadlines } from './services/index.js'
+import { renderList, getSourcesAsync, getTopHeadlinesAsync } from './services/index.js'
 import { getItemElement, getElementId } from './utils/index.js';
 
 export const init = () => {
@@ -15,11 +15,11 @@ export const init = () => {
   const newsData = new NewsData(
     toggleItem, 
     getItemElement,
-    getTopHeadlines,
+    getTopHeadlinesAsync,
   );
 
   // first get the source data
-  getSources().then((sources) => {
+  getSourcesAsync().then((sources) => {
     newsData.sources = sources;
     renderList(sourceList, sourceItem, newsData.sources);
   });

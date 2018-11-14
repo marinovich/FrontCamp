@@ -1,9 +1,6 @@
 import { request } from '../request.js';
 
-/**
- *
- */
-export const getSources = async () => {
+export const getSourcesAsync = async () => {
   const { sources } = await request('sources');
 
   return sources;
@@ -13,7 +10,7 @@ export const getSources = async () => {
  *
  * @param {string} sources
  */
-export const getTopHeadlines = async (sourceId) => {
+export const getTopHeadlinesAsync = async (sourceId) => {
   const { articles } = await request('top-headlines', `sources=${sourceId}`);
 
   return articles;
