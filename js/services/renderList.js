@@ -1,4 +1,4 @@
-import { generateLogoUrl, flattenChildNodes } from '../utils/index.js';
+import { generateLogoUrl, flattenChildNodes, generateUniqueId } from '../utils/index.js';
 
 /**
  * Renders item's list and replaces the gotten by id list with it
@@ -41,10 +41,10 @@ export const renderList = (list, item, data) => {
       }
 
       // add id postfix only for items with id
-      item.id = item.id && `${item.id}_${element.id}`; 
+      item.id = item.id && `${item.id}_${element.id || generateUniqueId()}`; 
     });
 
-    newItem.id = `${item.id}_${element.id}`;
+    newItem.id = `${item.id}_${element.id || generateUniqueId()}`;
     documentFragmentList.append(newItem);
   });
 
