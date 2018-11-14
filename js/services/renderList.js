@@ -13,8 +13,10 @@ export const renderList = (list, item, data) => {
     const newItem = item.cloneNode(true);
     const children = flattenChildNodes(newItem);
 
+    // TODO: need to create a separate service(s)
     children.forEach(item => {
       switch (item.id) {
+        
         // for source items
         case 'source-image': 
           item.src = generateLogoUrl(element.url);
@@ -22,6 +24,7 @@ export const renderList = (list, item, data) => {
         case 'source-caption': 
           item.textContent = element.name;
           break;
+
         // for article items
         case 'top-rated-image':
           item.src = element.urlToImage ? element.urlToImage : item.src;
@@ -37,7 +40,7 @@ export const renderList = (list, item, data) => {
           break;
       }
 
-      // TODO: add comment
+      // add id postfix only for items with id
       item.id = item.id && `${item.id}_${element.id}`; 
     });
 

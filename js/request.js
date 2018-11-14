@@ -9,7 +9,7 @@ export const request = async (endpoint, parameters = '') => {
   // const parametersAsString = parameters.join('')
   const response = await fetch(
     `${BASE_URL}/${API_VERSION}/${endpoint}?${parameters && `${parameters}&`}apiKey=${API_KEY}`
-  )
+  );
   const { status, message, ...result } = await response.json();
 
   // replace with constant

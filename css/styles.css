@@ -5,6 +5,8 @@
 
 html, body {
   height: 100%;
+  background-color: #ffffff;
+  font-family: 'Helvetica', sans-serif;
 }
 
 body {
@@ -15,7 +17,6 @@ body {
 }
 
 .title {
-  font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
   text-align: center;
   margin: 20px;
 }
@@ -39,14 +40,15 @@ body {
   max-width: 400px;
 }
 
-.sources__list,
-.top-rated__list {
-  display: flex;
-  flex-direction: column;
+.list {
   max-height: 500px;
-  flex: 0 1 500px;
   overflow-y: scroll;
   width: 100%;
+}
+
+.sources__list {
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
@@ -54,21 +56,17 @@ body {
   flex-direction: row;
   box-sizing: border-box;
   padding: 10px;
-  min-height: 60px;
   width: 100%;
   cursor: pointer;
 }
 
+/* to hide sample item */
 .item:first-child {
   display: none;
 }
 
 .sources__item {
   min-height: 60px;
-}
-
-.top-rated__item {
-  min-height: 150px;
 }
 
 .sources__item:hover, .top-rated__item:hover {
@@ -83,8 +81,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 90px;
+  flex: 1 0 auto;
+  width: 90px;
   max-height: 100%;
+  margin-top: -20px;
+  margin-right: 10px;
 }
 
 .item__image_small {
@@ -97,14 +98,23 @@ body {
   padding-left: 20px;
 }
 
-.item__caption {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-}
-
 .item__info {
   display: flex;
   flex-direction: column;
+}
+
+.item__caption {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.item__description {
+  margin-bottom: 10px;
+}
+
+.item__link {
+  align-self: flex-end;
 }
 
 .footer {

@@ -38,7 +38,7 @@ export class NewsData {
 
   /**
    *
-   * @param {*} id
+   * @param {string} id
    * @returns {Promise<Map<string,{}>>}
    */
   async getTopRatedNewsById(id) {
