@@ -12,9 +12,7 @@ export class NewsData {
   ) {
     this.sourcesMap = new Map();
     this.topRatedNews = new Map();
-
     this.currentSelectedSource = null;
-    this.currentHeadlinesItem = null;
 
     // toggle element selection
     this.toggleItemSelection = toggleElement;
@@ -61,13 +59,5 @@ export class NewsData {
     targetElement && this.toggleItemSelection(targetElement);
     this.currentSelectedSource && this.toggleItemSelection(this.currentSelectedSource);
     this.currentSelectedSource = targetElement;
-  }
-
-  toggleHeadlinesItem(eventTarget) {
-    const targetElement = this.getItemElement(eventTarget);
-
-    targetElement && this.toggleItemSelection(targetElement);
-    this.currentHeadlinesItem && this.toggleItemSelection(this.currentSelectedSource);
-    this.currentHeadlinesItem = targetElement;
   }
 }

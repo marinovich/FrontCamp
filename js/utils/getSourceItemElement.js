@@ -1,6 +1,6 @@
 /**
- *
- * @param {*} element
+ * Returns parent 'li' element if it exists, otherwise returns null
+ * @param {HTMLElement} element
  */
 export const getItemElement = (element) => {
   if (element.tagName.match(/li/i)) {

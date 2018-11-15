@@ -5,6 +5,7 @@ import { API_KEY, API_VERSION, BASE_URL } from './constants.js';
  * @param {string} endpoint - 
  * @param {string} [parameters] - 
  */
+// TODO: need to get parameters as Map<string, {}> and then parse them to the string
 export const request = async (endpoint, parameters = '') => {
   // const parametersAsString = parameters.join('')
   const response = await fetch(
