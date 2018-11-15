@@ -3,8 +3,7 @@
  * @param {HTMLElement} element
  * @returns {HTMLCollection}
  */
-export function flattenChildNodes(element) {
-  const { children } = element;
+export function flattenChildNodes({ children }) {
   let result = [...children];
 
   for (const child of children) {
