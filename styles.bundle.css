@@ -7,7 +7,6 @@ html, body {
   height: 100%;
   background-color: #ffffff;
   font-family: 'Helvetica', sans-serif;
-  user-select: none;
 }
 
 body {
@@ -131,3 +130,5 @@ body {
 .selected {
   background-color: rgba(83, 138, 228, 0.6);
 }
+
+/*# sourceMappingURL=styles.bundle.css.map*/
