@@ -1,6 +1,6 @@
-import { NewsData } from './NewsData.js';
-import { renderList, getSourcesAsync, getTopHeadlinesAsync } from './services/index.js'
-import { getItemElement, getElementId } from './utils/index.js';
+import { NewsData } from './NewsData';
+import { renderList, getSourcesAsync, getTopHeadlinesAsync } from './services/index';
+import { getItemElement, getElementId } from './utils/index';
 
 export const init = () => {
   const sourceList = document.getElementById('sources-list');
@@ -13,7 +13,7 @@ export const init = () => {
   const toggleItem = element => element.classList.toggle('selected');
 
   const newsData = new NewsData(
-    toggleItem, 
+    toggleItem,
     getItemElement,
     getTopHeadlinesAsync,
   );
@@ -30,7 +30,7 @@ export const init = () => {
   sourceList.addEventListener('click', ({ target: item }) => {
     newsData.toggleSourceItem(item);
 
-    newsData.getTopRatedNewsById(getElementId(item.id))
+    newsData.getTopRatedNewsById(getElementId((item as HTMLElement).id))
       .then(articles => renderList(topRatedList, topRatedItem, articles));
   });
 };

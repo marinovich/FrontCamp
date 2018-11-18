@@ -1,6 +1,6 @@
 /**
- * 
- * @param {string} id 
+ *
+ * @param {string} id
  * @returns {string}
  */
 export function getElementId(id) {

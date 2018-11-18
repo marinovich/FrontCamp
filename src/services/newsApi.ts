@@ -1,4 +1,4 @@
-import { request } from '../request.js';
+import { request } from '../request';
 
 export const getSourcesAsync = async () => {
   const { sources } = await request('sources');

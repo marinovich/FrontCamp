@@ -1,17 +1,19 @@
 export class NewsData {
-  /**
-   *
-   * @param {Function} toggleElement
-   * @param {Function} getItemElement
-   * @param {Promise<*>} getTopRatedNewsListAsync
-   */
+  private sourcesMap: Map<string, any>; // tslint:disable-line:no-any
+  public topRatedNews: Map<string, Object>;
+  private currentSelectedSource: HTMLElement;
+  private currentHeadlinesItem: HTMLElement;
+  public toggleItemSelection: Function;
+  public getItemElement: Function;
+  public getTopRatedNewsListAsync: Function;
+
   constructor(
     toggleElement,
     getItemElement,
     getTopRatedNewsListAsync,
   ) {
-    this.sourcesMap = new Map();
-    this.topRatedNews = new Map();
+    this.sourcesMap = new Map<string, Object>();
+    this.topRatedNews = new Map<string, Object>();
 
     this.currentSelectedSource = null;
     this.currentHeadlinesItem = null;

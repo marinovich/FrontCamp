@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "lib": ["es5", "es6", "dom", "es2018", "es2017"],
+  },
+  "include": [
+    "src/**/*.ts",
+  ],
+}

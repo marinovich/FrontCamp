@@ -1,0 +1,38 @@
+{
+  "name": "front-camp",
+  "version": "1.0.0",
+  "description": "https://marinovich.github.io/FrontCamp/",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run build && webpack-dev-server --mode development",
+    "build": "webpack --mode development",
+    "deploy": "npm run build && gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marinovich/FrontCamp.git"
+  },
+  "author": "Aliaksandr Marynovich aliaksandr_marynovich@epam.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marinovich/FrontCamp/issues"
+  },
+  "homepage": "https://marinovich.github.io/FromtCamp/",
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.15",
+    "gh-pages": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.1.6",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
