@@ -38,6 +38,7 @@ export const renderList = (list, item, data) => {
         case 'article-link':
           item.href = element.url;
           break;
+        default: return;
       }
 
       // add id postfix only for items with id
