@@ -1,6 +1,6 @@
 interface IResponse {
   status: string;
-  // if 'error' status
+  // if returns 'error'
   code?: string;
   message?: string;
 }

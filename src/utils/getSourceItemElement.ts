@@ -1,4 +1,4 @@
-import * as Models from '../models';
+import * as Models from 'models';
 
 export const getItemElement: Models.GetItemElementFunction = (element) => {
   if (element.tagName.match(/li/i)) {

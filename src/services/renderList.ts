@@ -1,4 +1,5 @@
-import { generateLogoUrl, flattenChildNodes, generateUniqueId } from '../utils';
+import { generateLogoUrl, flattenChildNodes, generateUniqueId } from 'utils';
+import * as defaultImage from 'images/default-news.png';
 
 /**
  * Renders item's list and replaces the gotten by id list with it
@@ -27,7 +28,7 @@ export const renderList = (list, item: HTMLElement, data) => {
 
         // for article items
         case 'top-rated-image':
-          item.src = element.urlToImage ? element.urlToImage : item.src;
+          item.src = element.urlToImage ? element.urlToImage : defaultImage;
           break;
         case 'article-caption':
           item.textContent = element.title;
