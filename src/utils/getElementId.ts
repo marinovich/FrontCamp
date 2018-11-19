@@ -1,8 +1,7 @@
 /**
- *
- * @param {string} id
- * @returns {string}
+ * Returns id
+ * @param id
  */
-export function getElementId(id) {
+export function getElementId(id: string): string {
   return id.split('_')[1];
 }

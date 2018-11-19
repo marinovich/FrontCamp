@@ -1,63 +1,49 @@
+import * as _ from 'lodash';
+
+import * as Models from 'models';
+
 export class NewsData {
-  private sourcesMap: Map<string, any>; // tslint:disable-line:no-any
-  public topRatedNews: Map<string, Object>;
-  private currentSelectedSource: HTMLElement;
-  private currentHeadlinesItem: HTMLElement;
-  public toggleItemSelection: Function;
   public getItemElement: Function;
-  public getTopRatedNewsListAsync: Function;
+  public getTopArticlesListAsync: Function;
+  public toggleItemSelection: Function;
+  private currentSelectedSource: HTMLElement;
+  private sourcesMap: Map<string, Models.ISource>;
+  private topArticles: Map<string, Models.IArticle[]>;
 
   constructor(
     toggleElement,
     getItemElement,
-    getTopRatedNewsListAsync,
+    getTopArticlesListAsync,
   ) {
-    this.sourcesMap = new Map<string, Object>();
-    this.topRatedNews = new Map<string, Object>();
+    this.sourcesMap = new Map<string, Models.ISource>();
+    this.topArticles = new Map<string, Models.IArticle[]>();
 
     this.currentSelectedSource = null;
-    this.currentHeadlinesItem = null;
-
     // toggle element selection
     this.toggleItemSelection = toggleElement;
     // checks whether selected source item is 'li' element, otherwise finds it
     this.getItemElement = getItemElement;
     // TODO: add comment
-    this.getTopRatedNewsListAsync = getTopRatedNewsListAsync;
+    this.getTopArticlesListAsync = getTopArticlesListAsync;
   }
 
-  set sources(sources) {
+  public setSources = (sources: Models.ISource[]): void => {
     sources.forEach(sourceItem => this.sourcesMap.set(sourceItem.id, sourceItem));
   }
 
-  get sources() {
-    return this.sourcesMap;
-  }
+  public getSources = (): Map<string, Models.ISource> => _.cloneDeep(this.sourcesMap);
 
-  setTopRatedNews(news) {
-    return this.topRatedNews.set(news[0].source.id, news);
-  }
-
-  /**
-   *
-   * @param {string} id
-   * @returns {Promise<Map<string,{}>>}
-   */
-  async getTopRatedNewsById(id) {
-    if (this.topRatedNews.has(id)) {
-      return this.topRatedNews.get(id);
+  public getTopRatedNewsById = async (id: string): Promise<Models.IArticle[]> => {
+    if (this.topArticles.has(id)) {
+      return this.topArticles.get(id);
     }
 
-    const topRatedNews = await this.getTopRatedNewsListAsync(id);
+    const topArticles = await this.getTopArticlesListAsync(id);
 
-    return this.setTopRatedNews(topRatedNews).get(id);
+    return this.setTopArticles(topArticles).get(id);
   }
 
-  /**
-   * Toggles element selection and set current source item
-   * @param {EventTarget} eventTarget
-   */
-  toggleSourceItem(eventTarget) {
+  public toggleSourceItem(eventTarget: HTMLElement): void {
     const targetElement = this.getItemElement(eventTarget);
 
     targetElement && this.toggleItemSelection(targetElement);
@@ -65,11 +51,5 @@ export class NewsData {
     this.currentSelectedSource = targetElement;
   }
 
-  toggleHeadlinesItem(eventTarget) {
-    const targetElement = this.getItemElement(eventTarget);
-
-    targetElement && this.toggleItemSelection(targetElement);
-    this.currentHeadlinesItem && this.toggleItemSelection(this.currentSelectedSource);
-    this.currentHeadlinesItem = targetElement;
-  }
+  private setTopArticles = (news: Models.IArticle[]) => this.topArticles.set(news[0].source.id, news);
 }

@@ -1,4 +1,4 @@
-import { generateLogoUrl, flattenChildNodes, generateUniqueId } from '../utils/index';
+import { generateLogoUrl, flattenChildNodes, generateUniqueId } from '../utils';
 
 /**
  * Renders item's list and replaces the gotten by id list with it
@@ -46,7 +46,7 @@ export const renderList = (list, item: HTMLElement, data) => {
     });
 
     newItem.id = `${item.id}_${element.id || generateUniqueId()}`;
-    documentFragmentList.append(newItem);
+    documentFragmentList.appendChild(newItem);
   });
 
   // remove previous added items

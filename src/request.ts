@@ -2,10 +2,10 @@ import { API_KEY, API_VERSION, BASE_URL } from './constants';
 
 /**
  * Returns NewsAPI response
- * @param {string} endpoint -
- * @param {string} [parameters] -
+ * @param endpoint -
+ * @param parameters -
  */
-export const request = async (endpoint, parameters = '') => {
+export const request = async (endpoint: string, parameters = '') => {
   // const parametersAsString = parameters.join('')
   const response = await fetch(
     `${BASE_URL}/${API_VERSION}/${endpoint}?${parameters && `${parameters}&`}apiKey=${API_KEY}`,

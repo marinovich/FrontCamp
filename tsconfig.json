@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es3",
     "sourceMap": true,
     "baseUrl": "./src",
     "lib": ["es5", "es6", "dom", "es2018", "es2017"],
