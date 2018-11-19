@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "f3b5de05e409e3eb6932";
+/******/ 	var hotCurrentHash = "5f78591b7481e4fd99e5";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -28908,7 +28908,7 @@ exports.BASE_URL = 'https://newsapi.org';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/default-news.png";
+module.exports = __webpack_require__.p + "images/b83b2dbc45db82faa926774a67848ab5-default-news.png";
 
 /***/ }),
 
@@ -29178,7 +29178,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 exports.__esModule = true;
-var request_1 = __webpack_require__(/*! ../request */ "./src/request.ts");
+var request_1 = __webpack_require__(/*! request */ "./src/request.ts");
 exports.getSourcesAsync = function () { return __awaiter(_this, void 0, Promise, function () {
     var sources;
     return __generator(this, function (_a) {
@@ -29219,7 +29219,8 @@ exports.getArticlesAsync = function (sourceId) { return __awaiter(_this, void 0,
 "use strict";
 
 exports.__esModule = true;
-var utils_1 = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
+var utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+var defaultImage = __webpack_require__(/*! images/default-news.png */ "./src/images/default-news.png");
 /**
  * Renders item's list and replaces the gotten by id list with it
  * @param {HTMLElement} list
@@ -29243,7 +29244,7 @@ exports.renderList = function (list, item, data) {
                     break;
                 // for article items
                 case 'top-rated-image':
-                    item.src = element.urlToImage ? element.urlToImage : item.src;
+                    item.src = element.urlToImage ? element.urlToImage : defaultImage;
                     break;
                 case 'article-caption':
                     item.textContent = element.title;
