@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -22,13 +23,10 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          transpileOnly: true,
-        },
+        include: path.join(__dirname, 'src')
       },
       {
-        test: /\.png$/,
+        test: /\.(png|jpg|gif)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -50,7 +48,8 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'index.bundle.js'
+    filename: 'index.bundle.js',
+    chunkFilename: "[name].chunk.js"
   },
 
   devServer: {
@@ -61,6 +60,8 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(['build']),
+
     new webpack.HotModuleReplacementPlugin(),
 
     new ForkTsCheckerWebpackPlugin({ 

@@ -2,7 +2,7 @@
  *
  * @param {HTMLElement} element
  */
-export function flattenChildNodes(element: HTMLElement): Element[] {
+export const flattenChildNodes = (element: HTMLElement): Element[] => {
   const children = Array.from(element.children);
   let result = [...children];
 
@@ -11,4 +11,4 @@ export function flattenChildNodes(element: HTMLElement): Element[] {
   }
 
   return result;
-}
+};

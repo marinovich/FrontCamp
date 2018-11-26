@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && webpack-dev-server --mode development",
-    "build": "webpack --mode development",
+    "build": "webpack",
     "deploy": "npm run build && gh-pages -d build"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://marinovich.github.io/FromtCamp/",
   "devDependencies": {
     "@types/lodash": "^4.14.118",
+    "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
