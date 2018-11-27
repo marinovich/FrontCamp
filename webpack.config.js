@@ -36,11 +36,10 @@ module.exports = {
         }]
       },
       {
-        type: 'javascript/auto',
+        // type: 'javascript/auto',
         test: /\.json/,
         use: [
           'custom-json-loader',
-          'file-loader',
         ]
       }
     ]
@@ -55,7 +54,8 @@ module.exports = {
   },
 
   resolveLoader: {
-    modules: ['node_modules', path.resolve(__dirname, 'loaders')]
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
+    extensions: ['.ts', '.js']
   },
 
   output: {

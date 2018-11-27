@@ -1,5 +1,5 @@
 import { NewsData } from 'NewsData';
-import { renderList, getSourcesAsync, getArticlesAsync } from 'services';
+import { renderList, getSourcesAsync, getArticlesAsync, renderDiffSection } from 'services';
 import { getItemElement, getElementId } from 'utils';
 
 export const init = async (): Promise<void> => {
@@ -31,4 +31,7 @@ export const init = async (): Promise<void> => {
     const articles = await newsData.getTopRatedNewsById(getElementId(item.id));
     renderList(topRatedList, topRatedItem, articles);
   });
+
+  // render JSON diff section for webpack task
+  renderDiffSection();
 };

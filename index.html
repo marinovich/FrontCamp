@@ -10,7 +10,7 @@
   <body>
     <header class="header">
       <h1 class="title">ALL NEWS</h1>
-      <button id="show-button">SHOW NEWS</button>
+      <button class="header__button" id="show-button">SHOW NEWS</button>
     </header>
     <main class="main">
       <section class="sources">
@@ -36,6 +36,16 @@
             </div>
           </li>
         </ul>
+      </section>
+      <section class="json-section hidden" id="json-section">
+        <div class="json-section__item">
+          <h4 class="json-section__caption">Source JSON</h4>
+          <pre id="old-json"></pre>
+        </div>
+        <div class="json-section__item"> 
+          <h4 class="json-section__caption">JSON after loader</h4>
+          <pre id="new-json"></pre>          
+        </div>
       </section>
     </main>
     <footer class="footer">
