@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-        include: path.join(__dirname, 'src')
+        include: path.resolve('src')
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -35,6 +35,14 @@ module.exports = {
           }
         }]
       },
+      {
+        type: 'javascript/auto',
+        test: /\.json/,
+        use: [
+          'custom-json-loader',
+          'file-loader',
+        ]
+      }
     ]
   },
 
@@ -46,16 +54,20 @@ module.exports = {
     extensions: ['.ts', '.js', '.json']
   },
 
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')]
+  },
+
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve('build'),
     filename: 'index.bundle.js',
     chunkFilename: "[name].chunk.js"
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'build/'),
+    contentBase: path.resolve('build'),
     port: 8000,
-    publicPath: 'http://localhost:8000/build/',
+    publicPath: 'http://localhost:8000',
     hot: true
   },
 
@@ -64,12 +76,12 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin(),
 
-    new ForkTsCheckerWebpackPlugin({ 
-      checkSyntacticErrors: true 
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true
     }),
 
     new ExtractTextPlugin('styles.bundle.css'),
-    
+
     new HtmlWebpackPlugin({
       template: './index.html',
       hash: true

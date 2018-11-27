@@ -3,13 +3,17 @@ import 'core-js';
 import 'isomorphic-fetch';
 
 import 'styles.css';
-import 'images/default-news.png';
+import * as data from 'test.json';
 
 const showButton = document.getElementById('show-button');
 
-showButton.addEventListener('click', async () => {
-  // tslint:disable-next-line:space-in-parens
-  const init = await import('init');
+showButton.addEventListener(
+  'click',
+  async () => {
+    // tslint:disable-next-line:space-in-parens
+    const { init } = await import(/* webpackChunkName: 'init' */'./init');
 
-  init.init();
-});
+    init();
+  },
+  { once: true },
+);

@@ -7,6 +7,7 @@ html, body {
   height: 100%;
   background-color: #ffffff;
   font-family: 'Helvetica', sans-serif;
+  user-select: none;
 }
 
 body {
@@ -36,7 +37,8 @@ body {
   border: 1px black solid;
 }
 
-.sources, .top-rated {
+.sources,
+.top-rated {
   max-width: 400px;
 }
 
@@ -63,6 +65,11 @@ body {
 /* to hide sample item */
 .item:first-child {
   display: none;
+}
+
+.item:nth-child(2n),
+ {
+  background-color: #f7f7f7;
 }
 
 .sources__item {

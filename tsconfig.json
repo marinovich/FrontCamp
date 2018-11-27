@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "moduleResolution": "node",
+    "module": "esnext",
     "sourceMap": true,
     "baseUrl": "./src",
     "lib": ["es5", "es6", "dom", "es2018", "es2017"],
