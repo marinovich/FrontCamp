@@ -5,11 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>NewsAPITask</title>
-  <link href="styles.bundle.css?5f78591b7481e4fd99e5" rel="stylesheet"></head>
+  <link href="styles.bundle.css?581bccbfc7c3db0ca0bd" rel="stylesheet"></head>
 
   <body>
     <header class="header">
       <h1 class="title">ALL NEWS</h1>
+      <button class="header__button" id="show-button">SHOW NEWS</button>
     </header>
     <main class="main">
       <section class="sources">
@@ -36,10 +37,20 @@
           </li>
         </ul>
       </section>
+      <section class="json-section hidden" id="json-section">
+        <div class="json-section__item">
+          <h4 class="json-section__caption">Source JSON</h4>
+          <pre id="old-json"></pre>
+        </div>
+        <div class="json-section__item"> 
+          <h4 class="json-section__caption">JSON after loader</h4>
+          <pre id="new-json"></pre>          
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <a href="https://newsapi.org" target="_blank">Powered by News API</a>
     </footer>    
-  <script type="text/javascript" src="index.bundle.js?5f78591b7481e4fd99e5"></script></body>
+  <script type="text/javascript" src="index.bundle.js?581bccbfc7c3db0ca0bd"></script></body>
 
 </html>
