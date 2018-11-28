@@ -8,9 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/index.ts',
 
-  mode: 'development',
-  devtool: 'source-map',
-
   module: {
     rules: [
       {
@@ -36,11 +33,8 @@ module.exports = {
         }]
       },
       {
-        // type: 'javascript/auto',
         test: /\.json/,
-        use: [
-          'custom-json-loader',
-        ]
+        loader: 'custom-json-loader'
       }
     ]
   },
@@ -54,21 +48,13 @@ module.exports = {
   },
 
   resolveLoader: {
-    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
-    extensions: ['.ts', '.js']
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')]
   },
 
   output: {
     path: path.resolve('build'),
     filename: 'index.bundle.js',
     chunkFilename: "[name].chunk.js"
-  },
-
-  devServer: {
-    contentBase: path.resolve('build'),
-    port: 8000,
-    publicPath: 'http://localhost:8000',
-    hot: true
   },
 
   plugins: [

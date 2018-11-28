@@ -2,7 +2,7 @@
 import 'core-js';
 import 'isomorphic-fetch';
 
-import 'styles.css';
+import 'styles/main.css';
 
 const showButton = document.getElementById('show-button');
 

@@ -1,6 +1,6 @@
 import * as data from 'test.json';
 
-export const renderDiffSection = () => {
+export const renderDiffSection = (): void => {
   const { old: sourceData, new: filteredData } = data.default;
   const diffSection = document.getElementById('json-section');
   const sourceDataSection = document.getElementById('old-json');

@@ -4,8 +4,8 @@
   "description": "https://marinovich.github.io/FrontCamp/",
   "main": "index.ts",
   "scripts": {
-    "start": "webpack-dev-server --watch",
-    "build": "webpack",
+    "start": "webpack-dev-server --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "deploy": "npm run build && gh-pages -d build"
   },
   "repository": {
