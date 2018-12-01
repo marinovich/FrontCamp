@@ -2,6 +2,4 @@
  * Returns id
  * @param id
  */
-export function getElementId(id: string): string {
-  return id.split('_')[1];
-}
+export const getElementId = (id: string): string => id.split('_')[1];

@@ -51,5 +51,5 @@ export class NewsData {
     this.currentSelectedSource = targetElement;
   }
 
-  private setTopArticles = (news: Models.IArticle[]) => this.topArticles.set(news[0].source.id, news);
+  private setTopArticles = (news: Models.IArticle[]): Map<string, Models.IArticle[]> => this.topArticles.set(news[0].source.id, news);
 }

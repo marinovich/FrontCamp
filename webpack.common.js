@@ -3,12 +3,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
-
-  mode: 'development',
-  devtool: 'source-map',
 
   module: {
     rules: [
@@ -22,13 +20,10 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          transpileOnly: true,
-        },
+        include: path.resolve('src')
       },
       {
-        test: /\.png$/,
+        test: /\.(png|jpg|gif)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -37,6 +32,10 @@ module.exports = {
           }
         }]
       },
+      {
+        test: /\.json/,
+        loader: 'custom-json-loader'
+      }
     ]
   },
 
@@ -48,27 +47,27 @@ module.exports = {
     extensions: ['.ts', '.js', '.json']
   },
 
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.bundle.js'
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')]
   },
 
-  devServer: {
-    contentBase: path.join(__dirname, 'build/'),
-    port: 8000,
-    publicPath: 'http://localhost:8000/build/',
-    hot: true
+  output: {
+    path: path.resolve('build'),
+    filename: 'index.bundle.js',
+    chunkFilename: "[name].chunk.js"
   },
 
   plugins: [
+    new CleanWebpackPlugin(['build']),
+
     new webpack.HotModuleReplacementPlugin(),
 
-    new ForkTsCheckerWebpackPlugin({ 
-      checkSyntacticErrors: true 
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true
     }),
 
     new ExtractTextPlugin('styles.bundle.css'),
-    
+
     new HtmlWebpackPlugin({
       template: './index.html',
       hash: true

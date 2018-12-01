@@ -2,8 +2,16 @@
 import 'core-js';
 import 'isomorphic-fetch';
 
-import { init } from 'init';
-import 'styles.css';
-import 'images/default-news.png';
+import 'styles/main.css';
 
-init();
+const showButton = document.getElementById('show-button');
+
+showButton.addEventListener(
+  'click',
+  async () => {
+    const { init } = await import(/* webpackChunkName: 'init' */'init'); // tslint:disable-line:space-in-parens
+
+    init();
+  },
+  { once: true },
+);

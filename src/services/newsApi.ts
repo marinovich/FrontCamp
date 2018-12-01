@@ -1,5 +1,5 @@
 import * as Models from 'models';
-import { request } from 'request';
+import { request } from './request';
 
 export const getSourcesAsync = async (): Promise<Models.ISource[]> => {
   const { sources } = await request('sources');

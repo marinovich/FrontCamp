@@ -1,1 +1,1 @@
-export const generateUniqueId = () => Math.random().toString(36).substr(2, 16);
+export const generateUniqueId = (): string => Math.random().toString(36).substr(2, 16);

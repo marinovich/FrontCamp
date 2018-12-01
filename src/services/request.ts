@@ -1,9 +1,9 @@
-import { API_KEY, API_VERSION, BASE_URL } from './constants';
+import { API_KEY, API_VERSION, BASE_URL } from 'constants/index';
 
 /**
  * Returns NewsAPI response
- * @param endpoint -
- * @param parameters -
+ * @param endpoint
+ * @param parameters
  */
 export const request = async (endpoint: string, parameters = '') => {
   // const parametersAsString = parameters.join('')
