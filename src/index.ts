@@ -2,16 +2,10 @@
 import 'core-js';
 import 'isomorphic-fetch';
 
+import { store } from 'store';
+import { updateUI } from 'services/updateUI';
+
 import 'styles/main.css';
 
-const showButton = document.getElementById('show-button');
-
-showButton.addEventListener(
-  'click',
-  async () => {
-    const { init } = await import(/* webpackChunkName: 'init' */'init'); // tslint:disable-line:space-in-parens
-
-    init();
-  },
-  { once: true },
-);
+store.subscribe(updateUI);
+store.dispatch({});

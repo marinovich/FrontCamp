@@ -1,3 +1,3 @@
 export * from './newsApi';
-export * from './renderDiffSection';
-export * from './renderList';
+// export * from './renderDiffSection';
+export * from './updateUI';

@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -11,17 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
-      },
-      {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'ts-loader',
         include: path.resolve('src')
       },
+
       {
         test: /\.(png|jpg|gif)$/,
         use: [{
@@ -32,10 +25,11 @@ module.exports = {
           }
         }]
       },
+
       {
         test: /\.json/,
         loader: 'custom-json-loader'
-      }
+      },
     ]
   },
 
@@ -44,7 +38,7 @@ module.exports = {
       'src',
       'node_modules',
     ],
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
 
   resolveLoader: {
@@ -66,11 +60,9 @@ module.exports = {
       checkSyntacticErrors: true
     }),
 
-    new ExtractTextPlugin('styles.bundle.css'),
-
     new HtmlWebpackPlugin({
       template: './index.html',
-      hash: true
+      hash: true,
     })
   ]
 };
