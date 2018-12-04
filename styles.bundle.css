@@ -20,12 +20,6 @@ html, body {
   right: 0;
   bottom: 0;
 }
-._1FL9MexFCBWUtchy9KsrIa {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  text-align: right;
-  margin: 20px;
-}
 ._2CVoQ68R3ulYQrwea2rYMF {
   text-align: center;
   margin: 20px 0;
@@ -43,16 +37,6 @@ html, body {
 
 ._2-fFAi0ZN5FqayFJwMaBDs {
   display: none;
-}
-._2Vh_iWr6X41_-VS7h3RU4Q {
-  margin: 20px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%;
-  border: 1px black solid;
-  max-height: 500px;
-  max-width: 400px;
-  overflow-y: scroll;
 }
 ._9D29ojZSq0p6liIcjPoP- {
   display: -webkit-box;
@@ -122,6 +106,12 @@ html, body {
     -ms-flex-item-align: end;
         align-self: flex-end;
 }
+._1FL9MexFCBWUtchy9KsrIa {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  text-align: right;
+  margin: 20px;
+}
 .AZRGmaKp3BNzUL-AQQmO8 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -163,6 +153,16 @@ html, body {
 ._29Urmx-OLnPfCDfwc3jD9D {
   background-color: rgba(83, 138, 228, .6) !important;
 }
+._2Vh_iWr6X41_-VS7h3RU4Q {
+  margin: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  border: 1px black solid;
+  max-height: 500px;
+  max-width: 400px;
+  overflow-y: scroll;
+}
 ._33GHuQaX2ElfHFzWu3UAnb {
   margin: 20px;
   -webkit-box-flex: 1;
@@ -172,19 +172,7 @@ html, body {
   max-height: 500px;
   max-width: 400px;
   overflow-y: scroll;
-}._1JJr2oBWnD5w5OagDlC9ok {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  max-width: 1000px;
-  margin: 0 auto;
-  height: 100%;
-}
-._2yCGYFGm49-Yp8s9OJSmUm {
+}._2yCGYFGm49-Yp8s9OJSmUm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -199,4 +187,16 @@ html, body {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+}
+._1JJr2oBWnD5w5OagDlC9ok {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 100%;
 }
