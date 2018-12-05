@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{351:function(n,r,o){"use strict";o.r(r),o.d(r,"errorHandler",function(){return e});var e=function(n){console.error(n)}}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{351:function(r,e,o){"use strict";o.r(e),o.d(e,"errorHandler",function(){return s});var n=o(8),s=function(r){switch(r.type){case n.e.NEWS_API_ERROR:throw console.error(r.message),new Error(r.message);default:throw console.error(r),new Error("Error occurs during request to NewsAPI.")}}}}]);
