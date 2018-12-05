@@ -7,7 +7,7 @@ export const ArticlesList = (props: Models.IArticlesListProps) => {
   const { articlesMap, selectedSourceId: id } = props;
 
   return (
-    <ul id="source-list" className={styles['ArticlesList']}>
+    <ul className={styles['ArticlesList']}>
       {articlesMap[id] && articlesMap[id].map(article =>
         <ArticleItem
           article={article}

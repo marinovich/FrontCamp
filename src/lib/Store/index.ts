@@ -1,3 +1,5 @@
+import * as ApiModels from 'models';
+
 export class Store {
   private reducer;
   private listeners;
@@ -17,15 +19,15 @@ export class Store {
     return Store;
   }
 
-  public static subscribe = (listener) => {
+  public static subscribe = (listener): void => {
     Store.storeInstance.listeners.push(listener);
   }
 
   // get current store state
-  public static getState = () => Store.storeInstance.state;
+  public static getState = (): ApiModels.IState => Store.storeInstance.state;
 
   // get previous (before dispatching) store state
-  public static getPrevState = () => Store.storeInstance.prevState;
+  public static getPrevState = (): ApiModels.IState => Store.storeInstance.prevState;
 
   public static dispatch = (action) => {
     const { reducer, state, listeners } = Store.storeInstance;
