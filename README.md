@@ -456,6 +456,7 @@ db.restaurants.createIndex(
 </p></details><br/>
 	
 <details><summary>db.restaurants.find({ borough: "Queens", cuisine: "Pizza" }).explain()</summary><p>
+
 ```json
 	{
 	"queryPlanner" : {
