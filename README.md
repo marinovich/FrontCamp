@@ -5,7 +5,7 @@ https://marinovich.github.io/FrontCamp/
 
 
  # Querying Restaurants Collection:
-  ### How many "Chinese" (cuisine restaurants are in"Queen" (borough)?
+  ### 1. How many "Chinese" (cuisine restaurants are in"Queen" (borough)?
   ```javascript
     db.restaurants
      .find({ 
@@ -16,7 +16,7 @@ https://marinovich.github.io/FrontCamp/
   ```
 <details><summary>Answer</summary><p>728</p></details><br/>
   
-  ### What is the _id of the restaurant which has the grade with the highest ever score?
+  ### 2. What is the _id of the restaurant which has the grade with the highest ever score?
   ```javascript
   db.restaurants
     .find({}, { _id: 1 })
@@ -30,7 +30,7 @@ https://marinovich.github.io/FrontCamp/
 ```
 </p></details><br/>
 	
-  ### Add a grade { grade: "A", score: 7, date: ISODate() } to every restaurant in “Manhattan” (borough).
+  ### 3. Add a grade { grade: "A", score: 7, date: ISODate() } to every restaurant in “Manhattan” (borough).
 ```javascript
   db.restaurants.updateMany(
     { borough: "Manhattan" }, 
@@ -39,7 +39,7 @@ https://marinovich.github.io/FrontCamp/
 ```
 <br/>
 	
-  ### What are the names of the restaurants which have a grade at index 8 with score less then 7? Use projection to include only names without _id.
+  ### 4. What are the names of the restaurants which have a grade at index 8 with score less then 7? Use projection to include only names without _id.
   ```javascript
   db.restaurants.find({ "grades.8.score": { $lt: 7 } }, {_id:0, name:1}) 
 ```
@@ -51,7 +51,7 @@ https://marinovich.github.io/FrontCamp/
 ```
 </p></details><br/>
 	
-  ### What are _id and borough of “Seafood” (cuisine) restaurants which received at least one “B” grade in period from 2014-02-01 to 2014-03-01? Use projection to include only _id and borough.
+  ### 5. What are _id and borough of “Seafood” (cuisine) restaurants which received at least one “B” grade in period from 2014-02-01 to 2014-03-01? Use projection to include only _id and borough.
 
 ```javascript
 db.restaurants.find(
@@ -99,7 +99,7 @@ db.restaurants.find(
 </p></details><br/>
 	
   # Indexing Restaurants Collection
-  ### Create an index which will be used by this query and provide proof (from explain() or Compass UI) that the indexis indeed used by the winning plan: 
+  ### 1. Create an index which will be used by this query and provide proof (from explain() or Compass UI) that the indexis indeed used by the winning plan: 
 
 ```javascript
 db.restaurants.find({ name: "Glorious Food" }) 
@@ -194,14 +194,14 @@ db.restaurants.createIndex({ name: 1 })
 ```
 </p></details><br/>
 	
-  ### Drop index from task
+  ### 2. Drop index from task
 
 ```javascript
 db.restaurants.drop({ key: { name: 1 } })
 ```
 <br/>
 
-  ### Create an index to make this query covered and provide proof (from explain() or Compass UI) that it is indeed covered: 
+  ### 3. Create an index to make this query covered and provide proof (from explain() or Compass UI) that it is indeed covered: 
   
 ```javascript
 db.restaurants.find({ restaurant_id: "41098650" }, { _id: 0, borough: 1 })
@@ -313,7 +313,7 @@ db.restaurants.createIndex({ restaurant_id: 1, borough: 1 })
 ```
 </p></details><br/>
 	
-  ### Create a partial index on cuisine field which will be used only when filtering on borough equal to“Staten Island": 
+  ### 4. Create a partial index on cuisine field which will be used only when filtering on borough equal to“Staten Island": 
   #### Uses index: 
 
 ```javascript
@@ -508,9 +508,9 @@ db.restaurants.createIndex(
 ```
 </p></details><br/>
 	
-  ### Create an index to make query from task 3.4 covered and provide proof (from explain() or Compass UI) that it is indeed covered
+  ### 5. Create an index to make query from task 3.4 covered and provide proof (from explain() or Compass UI) that it is indeed covered
 	
-  Index creation:
+  #### Index creation:
   
 ```javascript
 db.restaurants.createIndex(
