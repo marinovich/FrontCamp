@@ -30,7 +30,7 @@ https://marinovich.github.io/FrontCamp/
 ```
 </p></details><br/>
 	
-  ### What is the _id of the restaurant which has the grade with the highest ever score?
+  ### Add a grade { grade: "A", score: 7, date: ISODate() } to every restaurant in “Manhattan” (borough).
 ```javascript
   db.restaurants.updateMany(
     { borough: "Manhattan" }, 
@@ -41,10 +41,7 @@ https://marinovich.github.io/FrontCamp/
 	
   ### What are the names of the restaurants which have a grade at index 8 with score less then 7? Use projection to include only names without _id.
   ```javascript
-  db.restaurants
-    .find({}, { _id: 1 })
-    .sort({ "grades.score": -1 })
-    .limit(1)
+  db.restaurants.find({ "grades.8.score": { $lt: 7 } }, {_id:0, name:1}) 
 ```
 <details><summary>Answer</summary><p>
 
