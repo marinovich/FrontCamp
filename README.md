@@ -3,7 +3,8 @@
 https://marinovich.github.io/FrontCamp/
 
 
-
+<details><summary><strong>MongoDB. Home Task 1</strong></summary><p>
+  
  # Querying Restaurants Collection:
   ### 1. How many "Chinese" (cuisine restaurants are in"Queen" (borough)?
   ```javascript
@@ -688,3 +689,9 @@ db.restaurants.createIndex(
 }
 ```
 </p></details><br/>
+
+</p></details><br/>
+
+<details><summary><strong>MongoDB. Home Task 2</strong></summary><p>
+  
+ </p></details><br/>
