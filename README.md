@@ -694,4 +694,137 @@ db.restaurants.createIndex(
 
 <details><summary><strong>MongoDB. Home Task 2</strong></summary><p>
   
- </p></details><br/>
+# Aggregating Airlines Collection:
+  
+### 1. How many records does each airline class have? Use $project to show result as 
+```{ class: "Z", total: 999 }```
+```javascript
+  db.airlines.aggregate([
+    { $group: { _id:"$class", total:{ $sum:1 } } }, 
+    { $project:{ _id:0, class:"$_id", total:"$total" } }
+  ])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ "class" : "F", "total" : 140343 }
+{ "class" : "L", "total" : 23123 }
+{ "class" : "P", "total" : 5683 }
+{ "class" : "G", "total" : 17499 }
+```
+</p></details><br/>
+
+### 2. What are the top 3 destination cities outside of the United States (destCountry field, not included) with the highest average passengers count? Show result as
+```{ "avgPassengers" : 2312.380, "city" : "Minsk, Belarus" } ```
+```javascript
+  db.airlines.aggregate([
+    { $match: { "destCountry" : { $ne:"United States" } } }, 
+    { $group: { _id: "$destCity", avg: { $avg: "$passengers" } } },
+    { $sort: { avg: -1 } }, 
+    { $project: { _id: 0, avgPassengers: "$avg", city: "$_id"} }, 
+    { $limit: 3 }
+  ])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ "avgPassengers" : 8052.380952380952, "city" : "Abu Dhabi, United Arab Emirates" }
+{ "avgPassengers" : 7176.596638655462, "city" : "Dubai, United Arab Emirates" }
+{ "avgPassengers" : 7103.333333333333, "city" : "Guangzhou, China" }
+```
+</p></details><br/>
+
+### 3. Which carriers provide flights to Latvia (destCountry)? Show result as one document
+```{ "_id" : "Latvia", "carriers" : [ "carrier1", " carrier2", …] }```
+```javascript
+  db.airlines.aggregate([
+    { $match: { "destCountry": "Latvia" } }, 
+    { $group: { _id: "$destCountry", carriers: { $addToSet: "$carrier" } } }
+  ])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ 
+  "_id" : "Latvia", 
+  "carriers" : [ 
+    "Blue Jet SP Z o o", 
+    "Uzbekistan Airways", 
+    "JetClub AG" 
+  ] 
+}
+```
+</p></details><br/>
+
+### 4.  What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as 
+```{ "_id" : "<carrier>", "total" : 999}```
+```javascript
+  db.airlines.aggregate([
+    { $match: {
+      "originCountry": "United States", 
+      "destCountry": { $in: ["Spain","Italy","Greece"] } }
+    }, 
+    { $group: { _id: "$carrier", total: { $sum: 1 } } }, 
+    { $sort: { total: -1 } }, 
+    { $limit: 10 }, 
+    { $skip: 3 }
+  ])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ "_id" : "Iberia Air Lines Of Spain", "total" : 41 }
+{ "_id" : "VistaJet Limited", "total" : 38 }
+{ "_id" : "Compagnia Aerea Italiana", "total" : 33 }
+{ "_id" : "Cargolux Airlines International S.A", "total" : 21 }
+{ "_id" : "Air Europa", "total" : 20 }
+{ "_id" : "TAG Aviation Espana S.L.", "total" : 18 }
+{ "_id" : "Atlas Air Inc.", "total" : 13 }
+```
+</p></details><br/>
+
+### 5. Find the city (originCity) with the highest sum of passengers for each state (originState) of the United States (originCountry). Provide the city for the first 5 states ordered by state alphabetically (you should see the city for Alaska, Arizona and etc). Show result as 
+```{ "totalPassengers" : 999, "location" : { "state" : "abc", "city" : "xyz" } }```
+```javascript
+db.airlines.aggregate([
+  { $match: { "originCountry": "United States" } }, 
+  { $group: { _id: { state: "$originState", city: "$originCity" }, passengers: { $sum: "$passengers" } } }, 
+  { $sort: { "passengers": -1 } },
+  { $group: { _id: "$_id.state", other: { $push: { passengers: "$passengers", city: "$_id.city" } } } }, 
+  { $project: { _id: "$_id", other: { $arrayElemAt: [ "$other", 0 ] } } },
+  { $project: { totalPassengers: "$other.passengers", location: {state: "$_id", city: "$other.city" }, _id: 0 } }, 
+  { $sort: { "location.state": 1 } }, 
+  { $limit: 5 }
+])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ "totalPassengers" : 760120, "location" : { "state" : "Alabama", "city" : "Birmingham, AL" } }
+{ "totalPassengers" : 1472404, "location" : { "state" : "Alaska", "city" : "Anchorage, AK" } }
+{ "totalPassengers" : 13152753, "location" : { "state" : "Arizona", "city" : "Phoenix, AZ" } }
+{ "totalPassengers" : 571452, "location" : { "state" : "Arkansas", "city" : "Little Rock, AR" } }
+{ "totalPassengers" : 23701556, "location" : { "state" : "California", "city" : "Los Angeles, CA" } }
+```
+</p></details><br/>
+
+# Aggregate Enron Collection:
+  
+### Which pair of people have the greatest number of messages in the dataset?
+
+```javascript
+  db.enron.aggregate([
+    { $unwind: "$headers.To" }, 
+    { $group: { _id: { from: "$headers.From", to: "$headers.To" }, sum: { $sum:1 } } }, 
+    { $sort: { "sum": -1 } }, 
+    { $limit: 1 }
+  ])
+```
+<details><summary>Answer</summary><p>
+  
+```javascript
+{ "_id" : { "from" : "veronica.espinoza@enron.com", "to" : "recipients@enron.com" }, "sum" : 2181 }
+```
+</p></details><br/>
+  
+</p></details><br/>
