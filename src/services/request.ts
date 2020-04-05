@@ -1,24 +1,32 @@
-import { API_KEY, API_VERSION, BASE_URL } from 'constants/index';
+import { CustomErrorType, ResponseStatus } from 'constants/index';
+import * as Models from 'models';
+import { generateUrlWithParams } from 'utils';
+import { CustomError } from './CustomError';
 
 /**
  * Returns NewsAPI response
- * @param endpoint
- * @param parameters
+ * @param url
+ * @param params
+ * @param requestInit
  */
-export const request = async (endpoint: string, parameters = '') => {
-  // const parametersAsString = parameters.join('')
-  const response = await fetch(
-    `${BASE_URL}/${API_VERSION}/${endpoint}?${parameters && `${parameters}&`}apiKey=${API_KEY}`,
-  );
-  const { status, message, ...result } = await response.json();
+export const request = async (requestObject: Models.IRequestObject, requestInit?: RequestInit) => {
+  try {
+    const { url, params } = requestObject;
+    const generatedURL = generateUrlWithParams(url, params);
 
-  // replace with constant
-  if (status === 'error') {
-    // tslint:disable-next-line:no-console
-    console.error(message);
+    const response = await fetch(generatedURL, requestInit);
+    const { status, message, ...result } = await response.json();
 
-    throw new Error(message);
+    // replace with constant
+    if (status === ResponseStatus.ERROR) {
+      throw new CustomError(CustomErrorType.NEWS_API_ERROR, message);
+    }
+
+    return result;
+  } catch (error) {
+    // tslint:disable-next-line:space-in-parens
+    const { errorHandler } = await import(/* webpackChunkName: 'errorHandler' */'services/errorHandler');
+
+    errorHandler(error);
   }
-
-  return result;
 };

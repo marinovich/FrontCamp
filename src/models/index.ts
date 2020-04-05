@@ -1,6 +1,6 @@
+import { ResponseStatus } from 'constants/index';
 interface IResponse {
-  status: string;
-  // if returns 'error'
+  status: ResponseStatus;
   code?: string;
   message?: string;
 }
@@ -40,8 +40,24 @@ type ITopHeadlineSource = {
   name: string;
 };
 
-export type GetItemElementFunction = (element: HTMLElement) => HTMLElement;
+export interface IRequestFactoryResult {
+  sources: (params?: Dictionary) => Promise<ISource[]>;
+  topHeadlines: (params?: Dictionary) => Promise<IArticle[]>;
+}
 
-export interface INewsData {
+export interface IRequestObject {
+  url: string;
+  params: Dictionary;
+}
 
+export type Dictionary<T = string> = { [key: string]: T };
+
+export interface IState {
+  showButtonVisibility: boolean;
+  mainBlockVisibility: boolean;
+  articlesListVisibility: boolean;
+  sourcesList: ISource[];
+  articlesMap: Dictionary<IArticle[]>;
+  selectedSourceId: string;
+  errorMessage: string;
 }

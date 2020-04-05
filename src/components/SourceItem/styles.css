@@ -1,0 +1,33 @@
+.SourceItem {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  min-height: 60px;
+  align-items: center;
+
+  &:nth-child(2n+1) {
+    background-color: #f7f7f7;
+  }
+
+  &:hover {
+    background-color: rgba(83, 138, 228, 0.3);
+  }
+
+  &__image {
+    margin-right: 20px;
+    width: 40px;
+  }
+
+  &__caption {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+}
+
+.selected {
+  background-color: rgba(83, 138, 228, 0.6) !important;
+}
